@@ -10,11 +10,11 @@
     <div class="globalContainer">
         <h1>Heaven cocktails recipe</h1>
         <hr />
-        <% if(locals.randomDrinks){ %>
+        <% if(locals.random){ %>
             <div class="globalCard">
                 <h2>Give them a chance &#128071;</h2>
                 <div class="container">
-                <% randomDrinks.forEach(element => { %>
+                <% random.forEach(element => { %>
                     <div class="card">
                         <img src= "<%= element.strDrinkThumb %>" alt= '<%= "Drink" + element.strDrink + "image" %>'  height=200px/>
                         <br/>
@@ -32,6 +32,7 @@
                 <input type="submit" value="Search"/>
             </form>
         </div>
+        <div class="globalCard">
         <% if(locals.drinkDetails){ %>
                 <div class="drinkDetails">
                     <h4><%= drinkDetails.strDrink %></h4>
@@ -44,6 +45,15 @@
         <% } %>
         <% if(locals.error){ %>
                 <h3><%= error %></h3>
+        <% } %></div>
+        <hr />
+        <% if(locals.drinks){ %>
+            <div class="globalCard">
+                <h2>Cocktails names</h2>
+                <% drinks.forEach(element => { %>
+                    <p><%= element.strDrink %></p>
+                <% }); %>
+            </div>
         <% } %>
     </div>
 </body>
