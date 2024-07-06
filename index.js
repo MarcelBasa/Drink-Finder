@@ -8,7 +8,7 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-let drinksNames = await getDrinks(20);
+let drinksNames = await getDrinks();
 let randomDrinks = await getRandomDrinks(4);
 
 app.get("/", async (req, res) => {
@@ -54,16 +54,12 @@ async function getRandomDrinks(count){
     return drinkArr;
 }
 
-async function getDrinks(count){
-    const drinkArr = [];
-    for(let i=0; i<count; i++)
-    {
-        try{
-            const result = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`);
-            drinkArr.push(result.data.drinks[i]);
-        } catch (error) {
-            console.log("Error during generate dinks log: "+error);
-        }
+async function getDrinks(){
+    let result = [];
+    try{
+        result = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`);
+    } catch (error) {
+        console.log("Error during generate dinks log: "+error);
     }
-    return drinkArr;
+    return result == [] ? result : result.data.drinks;
 }

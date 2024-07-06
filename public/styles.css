@@ -108,3 +108,8 @@ input:hover {
     background-color: white; 
     color: black;
 }
+
+.drinkDetails > img{
+    border: 5px solid white;
+    border-radius: 3%;
+}
