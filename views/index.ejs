@@ -38,8 +38,17 @@
                     <h4><%= drinkDetails.strDrink %></h4>
                     <img src= "<%= drinkDetails.strDrinkThumb %>" alt= '<%= "Drink" + drinkDetails.strDrink + "image" %>'  height=300px/>
                     <p>(<%= drinkDetails.strCategory %>, 
-                    <%= drinkDetails.strAlcoholic %>, 
-                    <%= drinkDetails.strGlass %>)
+                        <%= drinkDetails.strAlcoholic %>, 
+                        <%= drinkDetails.strGlass %>)</p>
+                        <% 
+                            let i = 1; 
+                            while (drinkDetails[`strIngredient${i}`] != null) { 
+                        %>
+                            <p><%= drinkDetails[`strMeasure${i}`] %> of <%= drinkDetails[`strIngredient${i}`] %></p>
+                        <% 
+                                i++; 
+                            } 
+                        %>
                     <p><%= drinkDetails.strInstructions %></p>
                 </div>
         <% } %>

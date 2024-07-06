@@ -12,6 +12,7 @@ let drinksNames = await getDrinks();
 let randomDrinks = await getRandomDrinks(4);
 
 app.get("/", async (req, res) => {
+    console.log(randomDrinks);
     res.render("index.ejs", {
         drinks: drinksNames,
         random: randomDrinks
