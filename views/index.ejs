@@ -3,13 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Coktails</title>
 </head>
 <body>
-    <div class="card">
-        <img src="<%= img_src %>" alt="Drink image" height=200px/>
-        <br/>
-        <p><%= cocktail_name %></p>
+    <div class="globalContainer">
+        <h1>Heaven cocktails recipe</h1>
+        <hr />
+        <% if(locals.randomDrinks){ %>
+            <div class="globalCard">
+                <h2>Give them a chance &#128071;</h2>
+                <div class="container">
+                <% randomDrinks.forEach(element => { %>
+                    <div class="card">
+                        <img src= "<%= element.strDrinkThumb %>" alt= '<%= "Drink" + element.strDrink + "image" %>'  height=200px/>
+                        <br/>
+                        <h4><%= element.strDrink %></h4>
+                    </div>
+                <% }); %>
+                </div>
+            </div>
+        <% } %>
+        <hr />
+        <div class="globalCard">
+            <h2>Search your cocktail</h2>
+            <form action="/submit" method="POST">
+                <input type="text" name="drinkName" placeholder="cocktail name"/>
+                <input type="submit" value="Search"/>
+            </form>
+        </div>
+        <% if(locals.drinkDetails){ %>
+                <div class="drinkDetails">
+                    <h4><%= drinkDetails.strDrink %></h4>
+                    <img src= "<%= drinkDetails.strDrinkThumb %>" alt= '<%= "Drink" + drinkDetails.strDrink + "image" %>'  height=300px/>
+                    <p>(<%= drinkDetails.strCategory %>, 
+                    <%= drinkDetails.strAlcoholic %>, 
+                    <%= drinkDetails.strGlass %>)
+                    <p><%= drinkDetails.strInstructions %></p>
+                </div>
+        <% } %>
+        <% if(locals.error){ %>
+                <h3><%= error %></h3>
+        <% } %>
     </div>
 </body>
+<footer>
+    <p>© Marcel Basa</p>
+    <p>@ Heaven cocktails recipe</p>
+    <p>@ thecocktaildb API</p>
+</footer>
 </html>
