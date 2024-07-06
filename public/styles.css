@@ -90,14 +90,14 @@ footer{
 
 input{
     display: inline-block;
-  padding: 10px 20px;
-  text-decoration: none;
-  background-color: #df47a8; 
-  border: 1px solid white; 
-  border-radius: 5px; 
-  margin: 5px; 
-  transition: background-color 0.3s, color 0.3s;
-  color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #df47a8; 
+    border: 1px solid white; 
+    border-radius: 5px; 
+    margin: 5px; 
+    transition: background-color 0.3s, color 0.3s;
+    color: white;
 }
 
 input:hover {
@@ -106,4 +106,5 @@ input:hover {
 
 #textInput{
     background-color: white; 
+    color: black;
 }
