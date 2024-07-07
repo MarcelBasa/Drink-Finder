@@ -17,3 +17,4 @@ npm install
 ```
 node index.js
 ```
+![alt text](https://github.com/MarcelBasa/Cocktail-API/edit/master/images/cocktails_page_img.png?raw=true)
