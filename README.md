@@ -21,7 +21,7 @@ Drink Finder is a web application developed using Node.js, Express, Axios, JavaS
     ```
 2. Navigate to the project directory:
     ```sh
-    cd Cocktail-API
+    cd Drink-Finder
     ```
 3. Install dependencies:
     ```sh
