@@ -4,6 +4,7 @@ Drink Finder is a web application developed using Node.js, Express, Axios, JavaS
 
 ## Features
 - Fetches data from a public API about drinks
+- Displays information about a searched drink
 - Displays several random drinks
 - Shows names of other drinks
 
