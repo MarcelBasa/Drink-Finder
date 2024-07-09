@@ -10,9 +10,9 @@ Drink Finder is a web application developed using Node.js, Express, Axios, JavaS
 ## Technologies
 - **Node.js**
 - **JavaScript (JS)**
+- **EJS**
 - **Express**
 - **Axios**
-- **EJS**
 - **HTML/CSS**
 
 ## Installation
