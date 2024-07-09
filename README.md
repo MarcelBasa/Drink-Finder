@@ -17,7 +17,7 @@ Drink Finder is a web application developed using Node.js, Express, Axios, JavaS
 ## Installation
 1. Clone the repository:
     ```sh
-    git clone https://github.com/MarcelBasa/Cocktail-API.git
+    git clone https://github.com/MarcelBasa/Drink-Finder.git
     ```
 2. Navigate to the project directory:
     ```sh
