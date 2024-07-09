@@ -29,7 +29,7 @@ Drink Finder is a web application developed using Node.js, Express, Axios, JavaS
     ```
 4. Run the application:
     ```sh
-    npm start
+    node index.js
     ```
 5. Open your browser and go to `http://localhost:3000` to see the application in action.
 
