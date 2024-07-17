@@ -44,3 +44,6 @@ Drink Finder is a web application developed using Node.js, Express, Axios, JavaS
 - The application fetches data from a public API www.thecocktaildb.com.
 - It displays a random selection of drinks along with their names and images.
 - Users can search a drink to view more details, such as ingredients and instructions.
+
+### Page
+![Drink-finder-page](https://github.com/user-attachments/assets/07dd63aa-a937-425f-92af-cc411bca6485)
