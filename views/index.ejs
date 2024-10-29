@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Coktails</title>
 </head>
@@ -35,11 +36,12 @@
         <div class="globalCard">
         <% if(locals.drinkDetails){ %>
                 <div class="drinkDetails">
-                    <h4><%= drinkDetails.strDrink %></h4>
-                    <img src= "<%= drinkDetails.strDrinkThumb %>" alt= '<%= "Drink" + drinkDetails.strDrink + "image" %>'  height=300px/>
+                    <h3><%= drinkDetails.strDrink %></h3>
                     <p>(<%= drinkDetails.strCategory %>, 
                         <%= drinkDetails.strAlcoholic %>, 
                         <%= drinkDetails.strGlass %>)</p>
+                    <img src= "<%= drinkDetails.strDrinkThumb %>" alt= '<%= "Drink" + drinkDetails.strDrink + "image" %>'  height=300px/>
+                        <h4>Ingredients:</h4>
                         <% 
                             let i = 1; 
                             while (drinkDetails[`strIngredient${i}`] != null) { 
@@ -49,7 +51,8 @@
                                 i++; 
                             } 
                         %>
-                    <p><%= drinkDetails.strInstructions %></p>
+                        <h4>Instructions:</h4>
+                    <p id="instructions"><%= drinkDetails.strInstructions %></p>
                 </div>
         <% } %>
         <% if(locals.error){ %>
