@@ -1,8 +1,8 @@
 body {
-	background: linear-gradient(-45deg, #df47a8, #e73c7e, #23a6d5, #79b6cd);
-	background-size: 400% 400%;
-	animation: gradient 30s ease infinite;
-	height: 100%;
+    background: linear-gradient(-45deg, #df47a8, #e73c7e, #23a6d5, #79b6cd);
+    background-size: 400% 400%;
+    animation: gradient 30s ease infinite;
+    height: 100%;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     color: white;
     margin: 0;
@@ -10,46 +10,49 @@ body {
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 0%;
-	}
+    0% {
+        background-position: 0% 0%;
+    }
     25% {
         background-position: 100% 100%;
     }
-	50% {
-		background-position: 0% 0%;
-	}
-	75% {
-		background-position: 100% 100%;
-	}
+    50% {
+        background-position: 0% 0%;
+    }
+    75% {
+        background-position: 100% 100%;
+    }
     100% {
         background-position: 0% 50%;
     }
 }
 
-.globalContainer{
+.globalContainer {
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: space-evenly;
 }
 
-.globalCard{
+.globalCard {
     margin: 10px 0px 10px 0px;
 }
 
-.globalCard:nth-of-type(3){
+.globalCard:nth-of-type(3) {
     min-height: 10vh;
 }
 
 .drinkDetails {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center; 
-    height: 100%;
+    width: 45%;
+    margin: 20px auto;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -58,74 +61,89 @@ body {
     row-gap: 15px;
 }
 
-.card{
+.card {
     background-color: #df47a8;
     text-align: center;
     border: 5px solid white;
     border-radius: 3%;
 }
 
-h1{
+h1 {
     font-family: 'Pacifico', cursive;
-    color: white; 
+    color: white;
     font-size: 4rem;
-    letter-spacing: 15px;
+    letter-spacing: 25px;
 }
 
-h2{
+h2 {
     font-family: 'Great Vibes', cursive;
 }
 
-hr{
+h1, h2, h3, h4 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+h4 {
+    color: #ffd1dc; 
+    text-decoration: underline;
+}
+
+.drinkDetails > img {
+    border: 5px solid white;
+    border-radius: 3%;
+    margin: 15px 0;
+}
+
+#instructions {
+    padding: 10px 15%;
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #df47a8;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    color: white;
+}
+
+input:hover {
+    background-color: #23a6d5;
+}
+
+#textInput {
+    background-color: white;
+    color: black;
+}
+
+hr {
     width: 90%;
 }
 
-footer{
+footer {
     text-align: center;
     background-color: black;
     margin-top: 100px;
     padding: 25px;
 }
 
-input{
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: #df47a8; 
-    border: 1px solid white; 
-    border-radius: 5px; 
-    margin: 5px; 
-    transition: background-color 0.3s, color 0.3s;
-    color: white;
+.drinkDetails h4, .drinkDetails p {
+    margin: 5px 0;
 }
 
-input:hover {
-    background-color: #23a6d5; 
-}
-
-#textInput{
-    background-color: white; 
-    color: black;
-}
-
-.drinkDetails > img{
-    border: 5px solid white;
-    border-radius: 3%;
-}
-
-#instructions{
-    padding-left: 30%;
-    padding-right: 30%;
-    text-align: justify;
-}
-
-h4{
-    text-decoration: underline;
-}
-
-@media (max-width: 1200px){
-    #instructions{
+@media (max-width: 800px) {
+    #instructions {
         padding-left: 10%;
         padding-right: 10%;
     }
-  }
+    .drinkDetails {
+        width: 80%;
+    }
+}
