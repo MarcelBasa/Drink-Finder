@@ -43,7 +43,7 @@ body {
 }
 
 .drinkDetails {
-    width: 45%;
+    width: 40%;
     margin: 20px auto;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.6);
@@ -95,11 +95,12 @@ h4 {
 }
 
 #instructions {
-    padding: 10px 15%;
+    padding: 10px 5%;
     background-color: rgba(255, 255, 255, 0.1); 
     border-radius: 5px;
     color: white;
-    text-align: center;
+    text-align: justify;
+    text-align-last: center;
 }
 
 input {
