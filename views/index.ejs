@@ -5,35 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>Coktails</title>
+    <title>Heaven cocktails recipe</title>
 </head>
+<%- include("partials/header.ejs") %>
 <body>
     <div class="globalContainer">
-        <h1>Heaven cocktails recipe</h1>
-        <hr />
         <% if(locals.random){ %>
             <div class="globalCard">
                 <h2>Give them a chance &#128071;</h2>
                 <div class="container">
-                <% random.forEach(element => { %>
-                    <div class="card">
-                        <img src= "<%= element.strDrinkThumb %>" alt= '<%= "Drink" + element.strDrink + "image" %>'  height=200px/>
-                        <br/>
-                        <h4><%= element.strDrink %></h4>
-                    </div>
-                <% }); %>
+                    <% random.forEach(element => { %>
+                        <div class="card" data-drink-id="<%= element.idDrink %>">
+                            <img src="<%= element.strDrinkThumb %>" alt='<%= "Drink " + element.strDrink + " image" %>' height="200px"/>
+                            <br/>
+                            <h4><%= element.strDrink %></h4>
+                            <form id="selectForm" action="/select" method="POST" style="display: none;">
+                                <input type="hidden" name="drinkId" id="drinkIdInput">
+                            </form>
+                        </div>
+                    <% }); %>
                 </div>
             </div>
         <% } %>
-        <hr />
         <div class="globalCard">
             <h2>Search your cocktail</h2>
             <form action="/submit" method="POST">
                 <input type="text" id="textInput" name="drinkName" placeholder="cocktail name"/>
-                <input type="submit" value="Search"/>
+                <input id="searchButton" type="submit" value="Search"/>
             </form>
-        </div>
-        <div class="globalCard">
         <% if(locals.drinkDetails){ %>
                 <div class="drinkDetails">
                     <h3><%= drinkDetails.strDrink %></h3>
@@ -57,21 +56,23 @@
         <% } %>
         <% if(locals.error){ %>
                 <h3><%= error %></h3>
-        <% } %></div>
-        <hr />
-        <% if(locals.drinks){ %>
-            <div class="globalCard">
-                <h2>Cocktails names</h2>
-                <% drinks.forEach(element => { %>
-                    <p><%= element.strDrink %></p>
-                <% }); %>
-            </div>
         <% } %>
+        </div>
     </div>
+    <script>
+        const cards = document.getElementsByClassName("card");
+
+        Array.from(cards).forEach(singleCard => {
+            singleCard.addEventListener("click", () => {
+                const drinkId = singleCard.getAttribute("data-drink-id"); // Pobierz ID drinka
+                const form = document.getElementById("selectForm");
+                const input = document.getElementById("drinkIdInput");
+
+                input.value = drinkId; // Ustaw ID drinka w ukrytym formularzu
+                form.submit(); 
+            });
+        });
+    </script>
 </body>
-<footer>
-    <p>© Marcel Basa</p>
-    <p>@ Heaven cocktails recipe</p>
-    <p>@ thecocktaildb API</p>
-</footer>
+<%- include("partials/footer.ejs") %>
 </html>
