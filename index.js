@@ -18,7 +18,24 @@ app.get("/", async (req, res) => {
 
 app.post("/submit", async (req, res) => {
     try{
-        const result = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.body['drinkName']}`);
+        const drinkName = req.body['drinkName'];
+        const result = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`);
+        res.render("index.ejs", {
+            random: randomDrinks,
+            drinkDetails: result.data.drinks[0]
+        });
+    } catch (error) {
+        res.render("index.ejs", {
+            random: randomDrinks,
+            error: "We don't have this cocktail"
+        });
+    }
+});
+
+app.post("/select", async (req, res) => {
+    try{
+        const drinkName = req.body['drinkId'];
+        const result = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`);
         res.render("index.ejs", {
             random: randomDrinks,
             drinkDetails: result.data.drinks[0]

@@ -15,16 +15,16 @@
                 <h2>Give them a chance &#128071;</h2>
                 <div class="container">
                     <% random.forEach(element => { %>
-                        <div class="card" data-drink-id="<%= element.idDrink %>">
+                        <div class="card" data-drink-id="<%= element.idDrink %>" name=<%= element.strDrink %>>
                             <img src="<%= element.strDrinkThumb %>" alt='<%= "Drink " + element.strDrink + " image" %>' height="200px"/>
                             <br/>
                             <h4><%= element.strDrink %></h4>
-                            <form id="selectForm" action="/select" method="POST" style="display: none;">
-                                <input type="hidden" name="drinkId" id="drinkIdInput">
-                            </form>
                         </div>
                     <% }); %>
                 </div>
+                <form id="selectForm" action="/select" method="POST" style="display: none;">
+                    <input type="hidden" name="drinkId" id="drinkIdInput">
+                </form>
             </div>
         <% } %>
         <div class="globalCard">
@@ -50,6 +50,7 @@
                                 i++; 
                             } 
                         %>
+                        <br/>
                         <h4>Instructions:</h4>
                     <p id="instructions"><%= drinkDetails.strInstructions %></p>
                 </div>
@@ -64,11 +65,11 @@
 
         Array.from(cards).forEach(singleCard => {
             singleCard.addEventListener("click", () => {
-                const drinkId = singleCard.getAttribute("data-drink-id"); // Pobierz ID drinka
+                const drinkName = singleCard.getAttribute("name");
                 const form = document.getElementById("selectForm");
                 const input = document.getElementById("drinkIdInput");
 
-                input.value = drinkId; // Ustaw ID drinka w ukrytym formularzu
+                input.value = drinkName;
                 form.submit(); 
             });
         });
