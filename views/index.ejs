@@ -15,7 +15,7 @@
                 <h2>Give them a chance &#128071;</h2>
                 <div class="container">
                     <% random.forEach(element => { %>
-                        <div class="card" data-drink-id="<%= element.idDrink %>" name=<%= element.strDrink %>>
+                        <div class="card" data-drink-id="<%= element.idDrink %>" name="<%= element.strDrink %>">
                             <img src="<%= element.strDrinkThumb %>" alt='<%= "Drink " + element.strDrink + " image" %>' height="200px"/>
                             <br/>
                             <h4><%= element.strDrink %></h4>
@@ -33,31 +33,35 @@
                 <input type="text" id="textInput" name="drinkName" placeholder="cocktail name"/>
                 <input id="searchButton" type="submit" value="Search"/>
             </form>
-        <% if(locals.drinkDetails){ %>
-                <div class="drinkDetails">
-                    <h3><%= drinkDetails.strDrink %></h3>
-                    <p>(<%= drinkDetails.strCategory %>, 
-                        <%= drinkDetails.strAlcoholic %>, 
-                        <%= drinkDetails.strGlass %>)</p>
-                    <img src= "<%= drinkDetails.strDrinkThumb %>" alt= '<%= "Drink" + drinkDetails.strDrink + "image" %>'  height=300px/>
-                        <h4>Ingredients:</h4>
-                        <% 
-                            let i = 1; 
-                            while (drinkDetails[`strIngredient${i}`] != null) { 
-                        %>
-                            <p><%= drinkDetails[`strMeasure${i}`] %> of <%= drinkDetails[`strIngredient${i}`] %></p>
-                        <% 
-                                i++; 
-                            } 
-                        %>
-                        <br/>
-                        <h4>Instructions:</h4>
-                    <p id="instructions"><%= drinkDetails.strInstructions %></p>
-                </div>
-        <% } %>
-        <% if(locals.error){ %>
-                <h3><%= error %></h3>
-        <% } %>
+            <% if(locals.drinkDetails){ %>
+                    <div class="drinkDetails">
+                        <h3><%= drinkDetails.strDrink %></h3>
+                        <p>(<%= drinkDetails.strCategory %>, 
+                            <%= drinkDetails.strAlcoholic %>, 
+                            <%= drinkDetails.strGlass %>)</p>
+                        <img src= "<%= drinkDetails.strDrinkThumb %>" alt= '<%= "Drink" + drinkDetails.strDrink + "image" %>'  height=300px/>
+                            <h4>Ingredients:</h4>
+                            <% 
+                                let i = 1; 
+                                while (drinkDetails[`strIngredient${i}`] != null) { 
+                            %>
+                                <p><%= drinkDetails[`strMeasure${i}`] %> of <%= drinkDetails[`strIngredient${i}`] %></p>
+                            <% 
+                                    i++; 
+                                } 
+                            %>
+                            <br/>
+                            <h4>Instructions:</h4>
+                        <p id="instructions"><%= drinkDetails.strInstructions %></p>
+                    </div>
+            <% } %>
+            <% if(locals.error){ %>
+                    <h3><%= error %></h3>
+            <% } %>
+        </div>
+        <div class="globalCard">
+            <h2>Search by names</h2>
+            <%- include("partials/allDrinksLink.ejs") %>
         </div>
     </div>
     <script>

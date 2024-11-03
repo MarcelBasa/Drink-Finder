@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktails by letter <%= letter.toUpperCase() %></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<%- include("partials/header.ejs") %>
+<body>
+    <div class="globalContainer">
+        <% if (drinks.length > 0) { %>
+            <h2>Cocktails by letter <%= letter.toUpperCase() %></h2>
+            <div class="container">
+                <% drinks.forEach(element => { %>
+                    <div class="card" data-drink-id="<%= element.idDrink %>" name="<%= element.strDrink %>">
+                        <img src="<%= element.strDrinkThumb %>" alt='<%= "Drink " + element.strDrink + " image" %>' height="200px"/>
+                        <br/>
+                        <h4><%= element.strDrink %></h4>
+                    </div>
+                <% }); %>
+                <form id="selectForm" action="/select" method="POST" style="display: none;">
+                    <input type="hidden" name="drinkId" id="drinkIdInput">
+                </form>
+            </div>
+        <% } else { %>
+            <h3>No cocktails by letter "<%= letter.toUpperCase() %>"</h3>
+        <% } %>
+        <div class="globalCard">
+            <h2>Search by names</h2>
+            <%- include("partials/allDrinksLink.ejs") %>
+        </div>
+    </div>
+    <script>
+        const cards = document.getElementsByClassName("card");
+
+        Array.from(cards).forEach(singleCard => {
+            singleCard.addEventListener("click", () => {
+                const drinkName = singleCard.getAttribute("name");
+                const form = document.getElementById("selectForm");
+                const input = document.getElementById("drinkIdInput");
+
+                input.value = drinkName;
+                form.submit(); 
+            });
+        });
+    </script>
+</body>
+<%- include("partials/footer.ejs") %>
+</html>

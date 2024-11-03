@@ -36,11 +36,10 @@ body {
 
 .globalCard {
     margin: 10px 0px 10px 0px;
-    padding-bottom: 5%;
 }
 
 .globalCard:nth-of-type(3) {
-    min-height: 10vh;
+    min-height: 3vh;
 }
 
 .drinkDetails {
@@ -153,6 +152,29 @@ footer {
 
 .drinkDetails h4, .drinkDetails p {
     margin: 5px 0;
+}
+
+.alphabet a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.alphabet a::after {
+    content: '/';
+    color: #c5b4c6;
+    margin-left: 5px;
+}
+
+.alphabet a:last-child::after {
+    content: '';
+}
+
+.no-link-style {
+    text-decoration: none;
+    color: inherit;
+}
+.no-link-style:hover {
+    color: inherit;
 }
 
 @media (max-width: 800px) {

@@ -16,6 +16,21 @@ app.get("/", async (req, res) => {
     });
 });
 
+async function getRandomDrinks(count){
+    const drinkArr = [];
+    for(let i=0; i<count; i++)
+    {
+        try{
+            const result = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/random.php`);
+            drinkArr.push(result.data.drinks[0]);
+        } catch (error) {
+            console.log("Error during generate randmo dinks log: "+error);
+            return drinkArr;
+        }
+    }
+    return drinkArr;
+}
+
 app.post("/submit", async (req, res) => {
     try{
         const drinkName = req.body['drinkName'];
@@ -48,21 +63,22 @@ app.post("/select", async (req, res) => {
     }
 });
 
+app.get('/drinks/:letter', async (req, res) => {
+    const letter = req.params.letter;
+    try {
+        const response = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
+        const drinksLetter = response.data.drinks || [];
+        
+        res.render('drinksByLetter.ejs', { 
+                drinks: drinksLetter, 
+                letter: letter
+            });
+    } catch (error) {
+        console.error("Błąd przy pobieraniu drinków:", error);
+        res.render('drinksByLetter', { drinks: [], error: "Nie znaleziono drinków dla wybranej litery." });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server working on port ${port}`);
 });
-
-async function getRandomDrinks(count){
-    const drinkArr = [];
-    for(let i=0; i<count; i++)
-    {
-        try{
-            const result = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/random.php`);
-            drinkArr.push(result.data.drinks[0]);
-        } catch (error) {
-            console.log("Error during generate randmo dinks log: "+error);
-            return drinkArr;
-        }
-    }
-    return drinkArr;
-}
