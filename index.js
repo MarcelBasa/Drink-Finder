@@ -8,7 +8,8 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-let randomDrinks = await getRandomDrinks(4);
+const randomDrinks = await getRandomDrinks(4);
+const randomGoldDrink = await getRandomDrinks(1);
 
 async function getRandomDrinks(count){
     const drinkArr = [];
@@ -27,7 +28,8 @@ async function getRandomDrinks(count){
 
 app.get("/", async (req, res) => {
     res.render("index.ejs", {
-        random: randomDrinks
+        random: randomDrinks,
+        goldDrink: randomGoldDrink[0]
     });
 });
 
@@ -69,13 +71,12 @@ app.get('/drinks/:letter', async (req, res) => {
         const response = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
         const drinksLetter = response.data.drinks || [];
         
-        res.render('drinksByLetter.ejs', { 
+        res.render('allDrinksForFilter.ejs', { 
                 drinks: drinksLetter, 
                 letter: letter
             });
     } catch (error) {
-        console.error("Błąd przy pobieraniu drinków:", error);
-        res.render('drinksByLetter', { drinks: [], error: "Nie znaleziono drinków dla wybranej litery." });
+        console.error(error);
     }
 });
 
@@ -85,7 +86,7 @@ app.get('/categories/:category', async (req, res) => {
         const response = await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
         const drinksCategory = response.data.drinks || [];
         
-        res.render('drinksByLetter.ejs', { 
+        res.render('allDrinksForFilter.ejs', { 
                 drinks: drinksCategory,
                 category: category
             });
