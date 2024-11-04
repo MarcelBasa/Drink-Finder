@@ -56,11 +56,30 @@
                     </div>
             <% } %>
             <% if(locals.error){ %>
-                    <h3><%= error %></h3>
+                    <h3 class="error"><%= error %></h3>
             <% } %>
         </div>
         <div class="globalCard">
-            <h2>Search by names</h2>
+            <h2>Categories</h2>
+            <div class="container">
+                <div class="categories">
+                    <a href="/categories/Cocktail" class="no-link-style"><h4>Cocktail</h4></a>
+                    <h4>Ordinary Drink</h4>
+                    <h4>Punch / Party Drink</h4>
+                    <h4>Shake</h4>
+                    <h4>Cocoa</h4>
+                </div>
+                <div class="categories">
+                    <h4>Shot</h4>
+                    <h4>Coffee / Tea</h4>
+                    <h4>Homemade Liqueur</h4>
+                    <h4>Beer</h4>
+                    <h4>Soft Drink</h4>
+                </div>
+            </div>
+        </div>
+        <div class="globalCard">
+            <h2>Search by letter</h2>
             <%- include("partials/allDrinksLink.ejs") %>
         </div>
     </div>

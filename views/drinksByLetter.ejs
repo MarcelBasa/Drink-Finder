@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocktails by letter <%= letter.toUpperCase() %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Heaven cocktails recipe</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <%- include("partials/header.ejs") %>
 <body>
     <div class="globalContainer">
         <% if (drinks.length > 0) { %>
-            <h2>Cocktails by letter <%= letter.toUpperCase() %></h2>
+            <% if(locals.letter) { %>
+                <h2>Cocktails by letter <%= letter.toUpperCase() %></h2>
+            <% } else if(locals.category){ %>
+                <h2>Category: <%= category.toUpperCase() %></h2>
+            <% } %>
             <div class="container">
                 <% drinks.forEach(element => { %>
                     <div class="card" data-drink-id="<%= element.idDrink %>" name="<%= element.strDrink %>">
