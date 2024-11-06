@@ -46,4 +46,8 @@ Drink Finder is a web application developed using Node.js, Express, Axios, JavaS
 - Users can search a drink to view more details, such as ingredients and instructions.
 
 ### Page
-![Drink-finder-page](https://github.com/user-attachments/assets/07dd63aa-a937-425f-92af-cc411bca6485)
+![localhost_3000_](https://github.com/user-attachments/assets/fee96934-cd51-4454-8752-8f363c038abb)
+![localhost_3000_drinks_j](https://github.com/user-attachments/assets/6839b0c4-b6c6-45e0-9123-97b44dca841a)
+![localhost_3000_categories_Cocktail](https://github.com/user-attachments/assets/eeb4bd90-b043-4a5e-ac83-b874a00886df)
+
+
